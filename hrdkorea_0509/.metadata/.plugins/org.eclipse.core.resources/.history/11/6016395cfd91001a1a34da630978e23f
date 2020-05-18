@@ -1,0 +1,85 @@
+package com.hrd.test;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
+public class MemberDao {
+	
+	private static MemberDao instance = new MemberDao();
+	private MemberDao() {}
+	public static MemberDao getInstance() {
+		return instance;
+	}
+	
+	private Connection getConnection() throws SQLException {
+		Connection conn = null;
+		Context ctx;
+		
+		try {
+			ctx= new InitialContext();
+			DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/Oracle11g");
+			conn = ds.getConnection();
+		} catch (NamingException e) {
+			System.out.println(e.getMessage());
+		}
+		return conn;
+	}
+	
+	// 회원번호 자동생성 가져오기
+	public int getCustno() {
+		int custno = 0;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT CUSTNO FROM (SELECT ROWNUM RN, A.* FROM(SELECT*FROM member_tbl_02 ORDER BY custno DESC)A) WHERE RN=1";
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				custno = rs.getInt("custno")+1;
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}	
+		return custno;
+	}
+	// 회원등록
+	public int memberRegister(MemberDto dto) {
+		int result = 0;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "INSERT INTO member_tbl_02 (custno, custname, phone, address, joindate, grade, city)\r\n" + 
+				"    VALUES (member_tbl_02_SQ.NEXTVAL, ?, ?, ?, ?, ?, ?)";
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getCustname());
+			pstmt.setString(2, dto.getPhone());
+			pstmt.setString(3, dto.getAddress());
+			pstmt.setDate(4, dto.getJoindate());
+			pstmt.setString(5, dto.getGrade());
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return result;
+	}
+	// 회원목록조회
+	// 회원정보수정
+	// 회원매출조회
+	
+	
+	
+}

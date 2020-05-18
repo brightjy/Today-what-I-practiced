@@ -1,0 +1,41 @@
+package com.hrd.dto;
+
+public class SumPriceDto {
+	private int custno;
+	private String custname;
+	private int sum_price;
+	public SumPriceDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public SumPriceDto(int custno, String custname, int sum_price) {
+		super();
+		this.custno = custno;
+		this.custname = custname;
+		this.sum_price = sum_price;
+	}
+	public int getCustno() {
+		return custno;
+	}
+	public void setCustno(int custno) {
+		this.custno = custno;
+	}
+	public String getCustname() {
+		return custname;
+	}
+	public void setCustname(String custname) {
+		this.custname = custname;
+	}
+	public int getSum_price() {
+		return sum_price;
+	}
+	public void setSum_price(int sum_price) {
+		this.sum_price = sum_price;
+	}
+	@Override
+	public String toString() {
+		return "sumPriceDto [custno=" + custno + ", custname=" + custname + ", sum_price=" + sum_price + "]";
+	}
+	
+	
+}

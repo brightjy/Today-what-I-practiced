@@ -1,0 +1,32 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<% String conPath = request.getContextPath(); %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+*{margin:0 auto;}
+header, footer{background-color:blue; height:100px; line-height:100px; text-align:center;}
+h2, h4, a{color:white;}
+nav{padding:5px 0 5px 30px; background-color:purple;}
+nav a{padding-right:30px; text-decoration: none; font-weight:bold;}
+section{height:550px;}
+div{padding:30px;}
+h3{text-align:center; padding:0 0 30px 0;}
+td:last-child {text-align:center;}
+</style>
+</head>
+<body>
+<header>
+	<h2>쇼핑몰 회원관리 ver1.0</h2>
+</header>
+<nav>
+	<a href="<%=conPath %>/view/register.jsp">회원등록</a>
+	<a href="<%=conPath %>/view/memberList.jsp">회원정보조회/수정</a>
+	<a href="<%=conPath %>/view/sumPriceList.jsp">회원매출조회</a>
+	<a href="<%=conPath %>/view/main.jsp">홈으로.</a>
+</nav>
+</body>
+</html>

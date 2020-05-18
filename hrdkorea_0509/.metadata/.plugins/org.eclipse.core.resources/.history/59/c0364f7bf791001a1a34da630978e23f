@@ -1,0 +1,17 @@
+package com.hrd.test;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class MemberDao {
+//	public static Connection getConnection() throws Exception{
+//		Class.forName("oracle.jdbc.OracleDriver");
+//		Connection con = DriverManager.getConnection("jdbc:orcle:thin:@//localhost:1521/xe", "system", "1234");
+//		return con;
+//	}
+	private String driver="oracle.jdbc.OracleDriver";
+	private String url = "jdbc:orcle:thin:@//localhost:1521/xe";
+	private String uid = "system";
+	private String upw = "1234";
+	
+}

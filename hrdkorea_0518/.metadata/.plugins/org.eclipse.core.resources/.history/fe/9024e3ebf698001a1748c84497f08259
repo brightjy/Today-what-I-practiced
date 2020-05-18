@@ -1,0 +1,5 @@
+package com.hrd.dao;
+
+public class MemberDao {
+
+}

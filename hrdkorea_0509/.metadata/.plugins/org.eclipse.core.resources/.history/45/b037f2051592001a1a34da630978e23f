@@ -1,0 +1,23 @@
+package com.hrd.test.service;
+
+import java.sql.Date;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class memberRegisterService implements Service {
+
+	@Override
+	public void excute(HttpServletRequest request, HttpServletResponse response) {
+		
+		int custno = request.getParameter("custno");
+		String custname;
+		String phone;
+		String address;
+		Date joindate;
+		String grade;
+		String city;
+
+	}
+
+}

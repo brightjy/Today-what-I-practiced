@@ -1,0 +1,14 @@
+package com.hrd.test.service;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class memberRegisterService implements Service {
+
+	@Override
+	public void excute(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

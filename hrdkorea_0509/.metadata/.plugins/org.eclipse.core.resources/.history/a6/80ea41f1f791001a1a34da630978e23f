@@ -1,0 +1,29 @@
+package com.hrd.test;
+
+import java.sql.Connection;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
+public class MemberDao {
+	
+	private static MemberDao instance = new MemberDao();
+	private MemberDao() {}
+	public static MemberDao getInstance() {
+		return instance;
+	}
+	
+	private Connection getConnection() {
+		Connection conn = null;
+		Context ctx;
+		
+		try {
+			ctx= new InitialContext();
+		} catch (NamingException e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+	
+}

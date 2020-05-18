@@ -1,0 +1,32 @@
+<%@page import="com.hrd.dao.MemberDao"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<% String conPath = request.getContextPath(); %>    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<jsp:include page="header.jsp"></jsp:include>
+<section>
+<div>
+	<h3>홈쇼핑 회원등록</h3>
+	<form action="<%=conPath %>/pro/register.jsp" method="get" name="info">
+	<%
+		MemberDao mDao = MemberDao.getInstance();
+		int custno = mDao.custno();
+	%>
+		<table>
+			<tr>
+				<th>회원번호(자동발생)</th>
+				<td><input type="text" name="custno" value="<%=custno%>"></td>
+			</tr>
+		</table>
+	</form>
+</div>
+</section>
+<jsp:include page="footer.jsp"></jsp:include>
+</body>
+</html>

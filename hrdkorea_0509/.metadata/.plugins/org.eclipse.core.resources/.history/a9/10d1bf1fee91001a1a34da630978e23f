@@ -1,0 +1,5 @@
+package com.hrd.test;
+
+public class MoneyDto {
+
+}

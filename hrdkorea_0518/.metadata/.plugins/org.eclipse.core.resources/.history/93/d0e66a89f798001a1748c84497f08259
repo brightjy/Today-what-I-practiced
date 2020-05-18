@@ -1,0 +1,21 @@
+package com.hrd.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class MemberDao {
+	// 싱글톤
+	private static MemberDao instance = new MemberDao(); 
+	private MemberDao() {}
+	public static MemberDao getInstance() {
+		return instance;
+	}
+	// 데이터 연결
+	public static Connection getConnection() throws ClassNotFoundException, SQLException {
+		Class.forName("oracle.jdbc.OracleDriver");
+		Connection con = DriverManager.getConnection
+				("jdbc:oracle:thin:@//localhost:1521/xe", "system", "1234");
+		return con;
+	}
+}
